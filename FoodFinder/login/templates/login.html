@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'login/style.css' %}">
+
+<!DOCTYPE html>
+    <head>
+        <title>Login Page</title>
+    </head>
+<body>
+    <h1>Atlanta Food Finder</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Login">
+        <button type="button" onclick="resetPassword()">Reset Password</button>
+    </form>
+
+</body>
+    <script>
+    function resetPassword() {
+        // Add your reset password logic here
+        alert("Reset password functionality is not implemented yet.");
+    }
+    </script>
+</html>
