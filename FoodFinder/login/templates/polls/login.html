@@ -4,20 +4,29 @@
 <!DOCTYPE html>
     <head>
         <title>Login Page</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 <body>
-    <h1>Atlanta Food Finder</h1>
+    <div class="title">
+        <h1>Atlanta Food Finder</h1>
+    </div>
+    <div class="loginParts">
     <form>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
         
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Login">
-        <button type="button" onclick="resetPassword()">Reset Password</button>
+        <div class="buttons">
+            <input type="submit" value="Login">
+            <button type="button" onclick="resetPassword()">Reset Password</button>
+        </div>
     </form>
-
+    </div>
+    <div class="register">
+        <hr class="short-hr">
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
 </body>
     <script>
     function resetPassword() {

@@ -1,5 +1,8 @@
-h1 {
+.title {
     text-align: center;
+    font-size: 2em;
+    margin-top: 150px; /* Add margin to push title lower on the screen */
+    font-family: monospace;
 }
 
 body {
@@ -9,7 +12,58 @@ body {
 }
 
 .loginParts {
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    flex-direction: column;
+    font-family: monospace;
+}
+
+.loginParts input[type="text"],
+.loginParts input[type="password"] {
+    font-family: monospace;
+    width: 100%; /* Make input fields wider */
+    padding: 10px; /* Add padding to input fields */
+    font-size: 1.2em; /* Increase font size of input fields */
+    border-radius: 20px;
+    border-width: 0px;
+    margin: 2px;
+}
+.loginParts input[type="submit"],
+.loginParts button {
+    font-family: monospace;
+    padding: 8px 20px; /* Add padding to buttons */
+    font-size: 1em; /* Increase font size of buttons */
+    border-radius: 20px;
+    border-width: 0px;
+    margin: 10px;
+    justify-content: space-evenly; /* Center the buttons horizontally */
+}
+.loginParts input[type="submit"]:hover,
+.loginParts button:hover {
+    background-color: #c9c9c9; /* Button color on hover */
+}
+
+.buttons {
+    padding-left: 35px;
+}
+
+.loginParts label {
+    font-family: monospace;
+    font-size: 1.3em; /* Increase font size of labels */
+    padding-left: 15px; /* Add padding to labels */
+}
+.register {
+    font-family: monospace;
+    font-size: 1.3em; /* Increase font size of register link */
+    margin-top: 10px; /* Add margin to push register link lower on the screen */
+    text-align: center;
+    justify-content: center; /* Align center horizontally */
+    margin-top: 50px; /* Add margin to push register link below the login buttons */
+}
+.short-hr {
+
+    width: 35%;
 }
