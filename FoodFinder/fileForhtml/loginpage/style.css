@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(to top left, #ffd7ca, #ff9e92);
+    height: 100vh;
+    margin: 0;
+}
+
+.loginParts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
