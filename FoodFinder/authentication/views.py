@@ -61,3 +61,17 @@ def register_page(request):
         return redirect('/login/')
 
     return render(request, 'register.html')
+
+
+def reset_password_page(request):
+    if request.method == "POST":
+
+        email = request.POST.get("email")
+        user = User.objects.filter(email=email)
+
+        if not user:
+
+            messages.error(request, "Email not found!")
+            return redirect('/reset-password/')
+
+    return render(request, "reset_password.html")
