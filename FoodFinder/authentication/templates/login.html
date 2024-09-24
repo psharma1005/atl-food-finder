@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+{% load static %}
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <!-- Login form -->
-        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-            <h1 style="text-align: center;"><span style="color: black;">Atlanta Food Finder</span></h1>
 
+    <div class="box">
+        <form class="form_container" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- CSRF token for security -->
-
-            <!-- Login heading -->
-            <h3>Login</h3>
-            <hr>
-
-            <!-- Display error/success messages -->
             {% if messages %}
             <div class="alert alert-primary" role="alert">
                 {% for message in messages %}
@@ -29,28 +21,26 @@
                 {% endfor %}
             </div>
             {% endif %}
+            <h1 class="loginText">Atlanta Food Finder</h1>
 
-            <!-- Username input field -->
-            <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" name="username" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" placeholder="Enter username" required>
+            <div class="inputFields">
+                <label for="username" class="labels">Username:</label><br>
+                <input class="textInput" type="text" id="username" name="username" required><br><br>
             </div>
 
-            <!-- Password input field -->
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                    placeholder="Password" required>
+            <div class="inputFields">
+                <label for="password" class="labels">Password:</label><br>
+                <input class="textInput" type="password" id="password" name="password" required><br><br>
             </div>
 
-            <!-- Link to registration page -->
-            <p>Don't have an account <a href="/register/">Register</a> </p>
+            <div class="buttons">
+                <button type="submit">Login</button>
+            </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <p class="registration">Don't have an account <a href="register.html">Register</a> </p>
         </form>
     </div>
+
 </body>
 
 </html>

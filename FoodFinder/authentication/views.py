@@ -41,6 +41,7 @@ def register_page(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
 
+        
         user = User.objects.filter(email=email)
         if user.exists():
             messages.info(request, "Account already exists!")
