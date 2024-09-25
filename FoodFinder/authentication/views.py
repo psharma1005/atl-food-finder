@@ -41,9 +41,11 @@ def register_page(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
 
+        print(request.POST)
         
         user = User.objects.filter(email=email)
-        if user.exists():
+        user_ = User.objects.filter(username=username)
+        if user.exists() or user_.exists():
             messages.info(request, "Account already exists!")
             return redirect('/register/')
 
@@ -57,6 +59,11 @@ def register_page(request):
 
         user.set_password(password)
         user.save()
+
+
+        user.profile.favorite_cusine = "Indian"
+        user.profile.save()
+
 
         messages.info(request, "Account Created.")
         return redirect('/login/')
