@@ -1,0 +1,94 @@
+html, body{
+    margin: 0;
+}
+
+.banner {
+    background-color: peachpuff;
+    height: 33.33vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.banner-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 500px;
+}
+
+.title h1 {
+    margin: 0;
+    color: black;
+    font-size: 3rem;
+    align-items: center;
+}
+
+.title h2 {
+    margin: 0;
+    color: black;
+    font-size: 2.5rem;
+    align-items: center;
+}
+
+.image img{
+    position: absolute;
+    height: 150px;
+    width: auto;
+    right: 250px;
+}
+
+.icons {
+    display: flex;
+    padding: 20px;
+    gap: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.icon img {
+    height: 120px;
+    width: auto;
+}
+
+.icon-button {
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 1.5rem;
+    background-color: peachpuff;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.bottom-banner {
+    background-color: #ff9e92;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+}
+
+.logout-button {
+    position: fixed;
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 1.5rem;
+    background-color: grey;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    right: 20px;
+}
