@@ -9,6 +9,7 @@ from django.conf import settings   # Application settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_page, name='login_page'),
+    path('accounts/login/', login_page, name='login_page'),
     path('register/', register_page, name='register_page'),
     path('reset-password/', reset_password_page, name='reset_password_page'),
     path('profile/', profile_page, name='profile')

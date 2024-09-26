@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'restaurant_search.apps.RestaurantSearchConfig',
+    'profilePage',
 ]
 
 MIDDLEWARE = [
