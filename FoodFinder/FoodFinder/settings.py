@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "login.apps.LoginConfig",
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authentication',
     'restaurant_search.apps.RestaurantSearchConfig',
     'profilePage',
+    
 ]
 
 MIDDLEWARE = [
