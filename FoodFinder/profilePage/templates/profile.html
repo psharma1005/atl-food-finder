@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="buttons">
+            <button class="button">Button 1</button>
+            <button class="button">Button 2</button>
+        </div>
+    </div>
+    <div class="userdisplay">
+        <h1 class="center"> Username </h1>
+    </div>
+
+    <div class="favorites">
+        <h2 class="fav-title">Favorites</h2>
+        <div class="fav-restaurant">
+            <div class="restaurantPic">add Pic</div>
+            <div class="restaurantInfo">Add info here</div>
+        </div>
+
+        <div class="fav-restaurant">
+            <div class="restaurantPic">add Pic</div>
+            <div class="restaurantInfo">Add info here</div>
+        </div>
+    </div>
+    {% for item in x%}
+    <p>{{item}}</p>
+    {% endfor %}
+    <div>
+
+    </div>
+
+
+</body>
+
+</html>

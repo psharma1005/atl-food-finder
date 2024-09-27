@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Restaurants Matching Your Criteria</h1>
+    
+    {% if restaurants %}
+        <ul>
+        {% for restaurant in restaurants %}
+            <li>
+                <strong>{{ restaurant.name }}</strong><br>
+                Rating: {{ restaurant.rating }}<br>
+                Address: {{ restaurant.address }}<br>
+                Distance: {{ restaurant.distance }} km<br>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No restaurants found matching your criteria.</p>
+    {% endif %}
+</body>
+</html>
