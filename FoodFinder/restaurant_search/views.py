@@ -55,6 +55,8 @@ def get_restaurants(cuisine, min_rating, max_distance, user_location):
                     "rating": rating,
                     "address": restaurant.get("vicinity"),
                     "distance": distance,
+                    "latitude": restaurant_lat,
+                    "longitutde": restaurant_lng,
                 })
 
         return filtered_restaurants
