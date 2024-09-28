@@ -17,7 +17,10 @@
         </div>
     </div>
     <div class="userdisplay">
-        <h1 class="center"> Username </h1>
+        <h1 class="center">{{ greeting }}</h1>
+        <p class="center">First Name: {{ first_name }}</p>
+        <p class="center">Last Name: {{ last_name }}</p>
+        <p class="center">Favorite Cuisine: {{ favorite_cusine }}</p>
     </div>
 
     <div class="favorites">
@@ -32,14 +35,21 @@
             <div class="restaurantInfo">Add info here</div>
         </div>
     </div>
-    {% for item in x%}
-    <p>{{item}}</p>
+    
+    <!-- Form to update favorite cuisine -->
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="favorite_cusine">Enter your favorite cuisine:</label>
+        <input type="text" name="favorite_cusine" id="favorite_cusine" value="{{ favorite_cusine }}">
+        <button type="submit">Update</button>
+    </form>
+
+    {% for item in x %}
+    <p>{{ item }}</p>
     {% endfor %}
     <div>
 
     </div>
-
-
 </body>
 
 </html>
