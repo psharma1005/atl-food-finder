@@ -36,7 +36,8 @@
 
 
             restaurants.forEach((res) => {
-                L.marker([res.latitude, res.longitude]).addTo(map);
+                let marker = L.marker([res.latitude, res.longitude]).addTo(map);
+                marker.bindPopup(`<b>${res.name}</b><br>Address: ${res.address}<br>Rating: ${res.rating}`).openPopup();
             });
 
         </script>
@@ -51,6 +52,11 @@
             Rating: {{ restaurant.rating }}<br>
             Address: {{ restaurant.address }}<br>
             Distance: {{ restaurant.distance }} km<br>
+            <form action="{% url 'add_to_favorites' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+                <button type="submit">Add to Favorites</button>
+            </form>
         </li>
         {% endfor %}
     </ul>

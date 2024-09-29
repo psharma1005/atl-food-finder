@@ -14,5 +14,7 @@ urlpatterns = [
     path('register/', register_page, name='register_page'),
     path('reset-password/', reset_password_page, name='reset_password_page'),
     path('profile/', profile_page, name='profile'),
-    path('search/', restaurant_search_view, name='search')
+    path('search/', restaurant_search_view, name='search'),
+
+    path('add_to_favorites/', add_to_favorites, name='add_to_favorites'),
 ]
