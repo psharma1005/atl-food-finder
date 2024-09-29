@@ -28,7 +28,7 @@ def login_page(request):
             return redirect('/login/')
         else:
             login(request, user)
-            return redirect('/home/')
+            return redirect('/search/')
 
     return render(request, 'login.html')
 
