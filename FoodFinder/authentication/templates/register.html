@@ -11,18 +11,19 @@
 
 <body>
 
+    <form class="form_container" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if messages %}
+        <div class="alert_alert-primary" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
 
 
     <div class="box">
-        <form class="form_container" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% if messages %}
-            <div class="alert alert-primary" role="alert">
-                {% for message in messages %}
-                {{ message }}
-                {% endfor %}
-            </div>
-            {% endif %}
+    
             <h1 class="loginText2">Atlanta Food Finder</h1>
 
             <div class="inputFields2">

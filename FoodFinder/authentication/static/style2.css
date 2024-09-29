@@ -89,3 +89,10 @@ button {
     margin-top: 5px;
     text-align: center;
 }
+
+.alert_alert-primary{
+    margin-top: 90px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1em;
+}
