@@ -93,23 +93,25 @@
                     <li>
                         <strong>{{ restaurant.name }}</strong><br>
                         Rating: {{ restaurant.rating }}<br>
-                        Address: {{ restaurant.address }}<br>
+                        <!-- Add clickable link to show only the selected marker -->
+                        <a id="restaurant-address-{{ forloop.counter0 }}" href="javascript:void(0);">
+                            {{ restaurant.address }}
+                        </a><br>
                         Distance: {{ restaurant.distance }} km<br>
                         <form action="{% url 'add_to_favorites' %}" method="POST">
                             {% csrf_token %}
-
                             <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
                             <input type="hidden" name="rating" value="{{ restaurant.rating }}">
-                            <input type="hidden" name="address" value="{{  restaurant.address }}">
+                            <input type="hidden" name="address" value="{{ restaurant.address }}">
                             <input type="hidden" name="name" value="{{ restaurant.name }}">
                             <button type="submit">Add to Favorites</button>
                         </form>
                     </li>
                     {% endfor %}
                 </ul>
-                {% else %}
+            {% else %}
                 <p>No restaurants found matching your criteria.</p>
-                {% endif %}
+            {% endif %}
         </div>
 
         <div class="map_holder">
@@ -124,17 +126,46 @@
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
 
-                restaurants.forEach((res) => {
+                // Array to hold all markers
+                let markers = [];
+
+                // Add markers for all restaurants initially
+                restaurants.forEach((res, index) => {
                     let marker = L.marker([res.latitude, res.longitude]).addTo(map);
-                    marker.bindPopup(`<b>${res.name}</b><br>Address: ${res.address}<br>Rating: ${res.rating}`).openPopup();
+                    marker.bindPopup(`<b>${res.name}</b><br>Address: ${res.address}<br>Rating: ${res.rating}`);
+                    markers.push(marker);  // Store each marker
+                });
+
+                // Function to show only the selected marker and hide the others
+                function showOnlyMarker(index) {
+                    // Remove all markers
+                    markers.forEach(marker => {
+                        map.removeLayer(marker);
+                    });
+
+                    // Add only the selected marker back to the map
+                    markers[index].addTo(map);
+                    markers[index].openPopup();
+                    map.setView(markers[index].getLatLng(), 16); // Center the map on the selected marker
+                }
+
+                // Wait for the DOM to fully load before adding event listeners
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Add event listeners for each restaurant link
+                    restaurants.forEach((res, index) => {
+                        const linkElement = document.getElementById(`restaurant-address-${index}`);
+                        if (linkElement) {
+                            linkElement.addEventListener('click', function () {
+                                showOnlyMarker(index);  // Show only the marker for the clicked restaurant
+                            });
+                        }
+                    });
                 });
 
             </script>
 
         </div>
     </div>
-
-
 </body>
 
 </html>
