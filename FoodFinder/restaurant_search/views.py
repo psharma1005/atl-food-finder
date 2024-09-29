@@ -4,7 +4,10 @@ import geocoder
 from .forms import RestaurantSearchForm
 from django.utils.safestring import mark_safe
 from django.http import JsonResponse
+from profilePage.models import FavoriteRestaurant 
 import json
+from django.http import HttpResponse, HttpResponseNotFound
+from django.shortcuts import redirect
 
 GOOGLE_API_KEY = "***REMOVED***"
 
@@ -99,7 +102,18 @@ def add_to_favorites(request):
         restaurant_id = request.POST.get('restaurant_id')
         # Add logic to handle adding the restaurant to the favorites list
         # For example, saving to a database, etc.
-        
+        name = request.POST.get("name")
+        address = request.POST.get("address")
+        rating = request.POST.get("rating")
+        FavoriteRestaurant.objects.create(
+                    user=request.user,  
+                    name=name,
+                    rating=rating,
+                    address=address,
+        )
+        print(rating)
         # Return a success response
-        return JsonResponse({'status': 'success'})
-    return JsonResponse({'status': 'error'}, status=400)
+
+        return JsonResponse({'status': 'success', 'message': 'Restaurant added to favorites.'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=400)

@@ -54,7 +54,11 @@
             Distance: {{ restaurant.distance }} km<br>
             <form action="{% url 'add_to_favorites' %}" method="POST">
                 {% csrf_token %}
+
                 <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+                <input type="hidden" name="rating" value="{{ restaurant.rating }}">
+                <input type="hidden" name="address" value="{{  restaurant.address }}">
+                <input type="hidden" name="name" value="{{ restaurant.name }}">
                 <button type="submit">Add to Favorites</button>
             </form>
         </li>

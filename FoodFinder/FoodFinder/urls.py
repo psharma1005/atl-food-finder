@@ -16,5 +16,5 @@ urlpatterns = [
     path('profile/', profile_page, name='profile'),
     path('search/', restaurant_search_view, name='search'),
 
-    path('add_to_favorites/', add_to_favorites, name='add_to_favorites'),
+    path('profile/', add_to_favorites, name='add_to_favorites'),
 ]
