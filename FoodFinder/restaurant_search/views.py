@@ -3,6 +3,7 @@ import requests
 import geocoder
 from .forms import RestaurantSearchForm
 from django.utils.safestring import mark_safe
+from django.http import JsonResponse
 import json
 
 GOOGLE_API_KEY = "***REMOVED***"
@@ -91,3 +92,14 @@ def restaurant_search_view(request):
             return render(request, 'tempo/results.html', {'restaurant_json':restaurant_json,'restaurants': restaurants })
 
     return render(request, 'tempo/search_form.html', {'form': form})
+
+
+def add_to_favorites(request):
+    if request.method == 'POST':
+        restaurant_id = request.POST.get('restaurant_id')
+        # Add logic to handle adding the restaurant to the favorites list
+        # For example, saving to a database, etc.
+        
+        # Return a success response
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'status': 'error'}, status=400)
