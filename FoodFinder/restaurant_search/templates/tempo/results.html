@@ -21,10 +21,10 @@
     <div class="map_holder">
         <div id="map" style="height: 600px; width: 600px;"></div>
 
-        <script>
 
-            const restaurant_info = {{ restaurants }};
-            console.log(typeof restaurant_info)
+
+        <script type="text/javascript">
+            const restaurants = JSON.parse('{{ restaurant_json|escapejs|safe }}');
 
             var map = L.map('map').setView([33.7756, -84.3963], 15);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,7 +32,15 @@
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
+
+
+
+            restaurants.forEach((res) => {
+                L.marker([res.latitude, res.longitude]).addTo(map);
+            });
+
         </script>
+
     </div>
 
     {% if restaurants %}

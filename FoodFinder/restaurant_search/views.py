@@ -2,6 +2,8 @@ from django.shortcuts import render
 import requests
 import geocoder
 from .forms import RestaurantSearchForm
+from django.utils.safestring import mark_safe
+import json
 
 GOOGLE_API_KEY = "***REMOVED***"
 
@@ -56,7 +58,7 @@ def get_restaurants(cuisine, min_rating, max_distance, user_location):
                     "address": restaurant.get("vicinity"),
                     "distance": distance,
                     "latitude": restaurant_lat,
-                    "longitutde": restaurant_lng,
+                    "longitude": restaurant_lng,
                 })
 
         return filtered_restaurants
@@ -76,7 +78,6 @@ def restaurant_search_view(request):
             if g.ok and g.latlng:
                 latitude = g.latlng[0]
                 longitude = g.latlng[1]
-                print(f"Latitude: {latitude}, Longitude: {longitude}")
                 user_location = (latitude, longitude)
             else:
                 print("Could not retrieve location. Please check your network or IP service.")
@@ -85,6 +86,8 @@ def restaurant_search_view(request):
             restaurants = get_restaurants(cuisine, min_rating, max_distance, user_location)
             if isinstance(restaurants, str):
                 return render(request, 'tempo/error.html', {'error': restaurants})
-            return render(request, 'tempo/results.html', {'restaurants': restaurants})
+
+            restaurant_json = json.dumps(restaurants)
+            return render(request, 'tempo/results.html', {'restaurant_json':restaurant_json,'restaurants': restaurants })
 
     return render(request, 'tempo/search_form.html', {'form': form})
