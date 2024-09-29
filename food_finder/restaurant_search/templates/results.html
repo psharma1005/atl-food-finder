@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .restaurant-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .restaurant-rating {
+            color: #888;
+        }
+        .restaurant-distance {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Restaurant Search Results</h1>
+
+{% if restaurants %}
+    <ul>
+    {% for restaurant, distance in restaurants %}
+        <li>
+            <span class="restaurant-name">{{ restaurant.name }}</span><br>
+            <span class="restaurant-rating">Rating: {{ restaurant.rating }}</span><br>
+            <span class="restaurant-distance">Distance: {{ distance|floatformat:2 }} km</span><br>
+            <span>Address: {{ restaurant.vicinity }}</span><br>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found. Please try a different search.</p>
+    <a href="/search/">Back to search</a>
+{% endif %}
+
+</body>
+</html>
+
