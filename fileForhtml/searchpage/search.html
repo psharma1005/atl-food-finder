@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search Page</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+    <div class="banner">
+        <div class="banner-content">
+                <div class="title">
+                    <h1>Atlanta Food Finder</h1>
+                </div>
+        </div>
+        <div class="search-bar">
+                <input type="text" placeholder="Search for restaurants">
+                <button type="submit">Search</button>
+            </div>
+    </div>
+    <div class="body-holder">
+        <div class="vertical-banner">
+            <div class="dropdowns">
+                <label for="diningType">Dining Type</label>
+                <select id="diningType" class="dropdown" aria-label="Type of Dining">
+                    <option value="" disabled selected>Choose an Option</option>
+                    <option value="diningType1">Fine Dining</option>
+                    <option value="diningType2">Fast Food</option>
+                    <option value="diningType3">Cafe</option>
+                </select>
+
+                <label for="cuisine">Cuisine</label>
+                <select id="cuisine" class="dropdown" aria-label="Cuisine">
+                    <option value="" disabled selected>Choose an Option</option>
+                    <option value="cuisine1">Japanese</option>
+                    <option value="cuisine2">Latin American</option>
+                    <option value="cuisine3">South Asian</option>
+                    <option value="cuisine4">American</option>
+                    <option value="cuisine5">European</option>
+                    <option value="cuisine6">Breakfast</option>
+                    <option value="cuisine7">Italian</option>
+                    <option value="cuisine8">Southern</option>
+                </select>
+
+                <label for="ratings">Ratings</label>
+                <select id="ratings" class="dropdown" aria-label="Ratings">
+                    <option value="" disabled selected>Choose an Option</option>
+                    <option value="ratings1">*</option>
+                    <option value="ratings2">**</option>
+                    <option value="ratings3">***</option>
+                    <option value="ratings4">****</option>
+                    <option value="ratings5">*****</option>
+                </select>
+            </div>
+
+            <div class="types-search-button">
+                <button class="search-button">Search</button>
+            </div>
+        </div>
+        <div class="map-holder">
+            <div class="google-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.421275570357!2d-84.39885992415128!3d33.77561777326231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5048aebc34fe3%3A0xb52ad03e3ad8c50f!2z44K444On44O844K444Ki5bel56eR5aSn5a2m!5e0!3m2!1sja!2sus!4v1727203232115!5m2!1sja!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
