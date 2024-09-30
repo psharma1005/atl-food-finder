@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'styleForProfile.css' %}">
+</head>
+
+<body>
+    <div class="topBar">
+            <button class="button">Back to Search</button>
+            <button class="button">Logout</button>
+    </div>
+    
+    <div class="userdisplay">
+        <h1>{{ greeting }}</h1>
+        <div class="userInfo">
+            <p class="center">First Name: {{ first_name }}</p>
+            <p class="center">Last Name: {{ last_name }}</p>
+        </div>
+        <div class="favCusine">
+            <p class="center">Favorite Cuisine: {{ favorite_cusine }}</p>
+        </div>
+        </div>
+    </div>
+
+    <div class="updateFav">
+    <!-- Form to update favorite cuisine -->
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="favorite_cusine">Update favorite cuisine:</label><br>
+        <input type="text" name="favorite_cusine" id="favorite_cusine" value="{{ favorite_cusine }}">
+        <button type="submit">Update Favorite Cuisine</button>
+    </form>
+    </div>
+
+    <div class="addFav">
+        <!-- Form to add a new favorite restaurant -->
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h3>Add New Favorite Restaurant</h3>
+            <div class="restaurantInputs">
+                <div class="restaurantIputs1">
+                    <label for="restaurant_name">Restaurant Name:</label>
+                    <input type="text" id="restaurant_name" name="restaurant_name" required><br>
+
+                    <label for="restaurant_rating">Rating:</label>
+                    <input type="number" step="0.1" id="restaurant_rating" name="restaurant_rating" required><br>
+                </div>
+
+                <div class="restaurantIputs2">
+                    <label for="restaurant_address">Address:</label>
+                    <input type="text" id="restaurant_address" name="restaurant_address" required><br>
+    
+                    <label for="restaurant_distance">Distance (km):</label>
+                    <input type="number" step="0.1" id="restaurant_distance" name="restaurant_distance" required><br>
+                </div>
+            </div>
+            <button type="submit">Add Favorite Restaurant</button>
+            
+        </form>
+        </div>
+
+    <!-- Display Favorite Restaurants -->
+    <div class="favorites">
+        <h2 class="fav-title">Favorite Restaurants</h2>
+        {% if favorite_restaurants %}
+            <ul>
+                {% for restaurant in favorite_restaurants %}
+                    <li>
+                        <strong>{{ restaurant.name }}</strong><br>
+                        Rating: {{ restaurant.rating }}<br>
+                        Address: {{ restaurant.address }}<br>
+                        Distance: {{ restaurant.distance }} km
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No favorite restaurants yet.</p>
+        {% endif %}
+    </div>
+
+
+</body>
+
+</html>
