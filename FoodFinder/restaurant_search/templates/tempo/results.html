@@ -1,80 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--{% load static %} -->
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
 
-    <!--<link rel="stylesheet" href="{% static 'style.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'styleForResults.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <style>
-        html, body{
-            margin: 0;
-            padding: 0;
-            font-family: monospace;
-            height: 100%;
-        }
-
-        .banner {
-            background-color: peachpuff;
-            height: 20vh;
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            justify-content: space-between;
-            position:relative;
-        }
-
-        .title {
-            font-size: 2rem;
-        }
-
-        .vertical_banner {
-            background-color: lightpink;
-            width: fit-content;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-            height: 80vh;
-            text-align: left;
-            padding: 10px;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-        
-        button{
-            font-family: monospace;
-            font-size: 1em;
-            padding: 5px 10px;
-            border-radius: 10px;
-            border-width: 1px;
-            background-color: #ffffff;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: lightgray;
-        }
-
-        .map_holder {
-            width: 100%;
-        }
-
-        .body_holder {
-            display: flex;
-        }
-
-        #map {
-            width: 100%;
-            height: 80vh;
-        }
-    </style>
 </head>
 
 <body>
