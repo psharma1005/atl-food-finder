@@ -11,6 +11,27 @@ from django.shortcuts import redirect
 
 GOOGLE_API_KEY = "***REMOVED***"
 
+def get_place_details(place_id):
+    url = f"https://maps.googleapis.com/maps/api/place/details/json"
+    params = {
+        "place_id": place_id,
+        "key": GOOGLE_API_KEY,
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json().get("result", {})
+        return data.get("reviews", [])
+    return []
+
+
+def restaurant_reviews_view(request, place_id):
+    reviews = get_place_details(place_id)
+    if not reviews:
+        return render(request, 'tempo/error.html', {'error': "No reviews found or error fetching reviews."})
+
+    return render(request, 'tempo/reviews.html', {'reviews': reviews})
+
 def get_distance_via_road(user_lat, user_lng, restaurant_lat, restaurant_lng):
     url = "https://maps.googleapis.com/maps/api/distancematrix/json"
 
