@@ -84,6 +84,7 @@ def get_restaurants(cuisine, min_rating, max_distance, user_location):
                     "distance": distance,
                     "latitude": restaurant_lat,
                     "longitude": restaurant_lng,
+                    "place_id": restaurant["place_id"],
                 })
 
         return filtered_restaurants
