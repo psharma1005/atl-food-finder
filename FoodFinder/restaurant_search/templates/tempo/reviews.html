@@ -1,0 +1,17 @@
+<h2>Restaurant Reviews</h2>
+
+{% if reviews %}
+    <ul>
+    {% for review in reviews %}
+        <li>
+            <strong>Rating: {{ review.rating }} / 5</strong>
+            <p>{{ review.text }}</p>
+            <p>Reviewed by: {{ review.author_name }} on {{ review.relative_time_description }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reviews found for this restaurant.</p>
+{% endif %}
+
+<a href="{% url 'restaurant_search' %}">Back to Search</a>
