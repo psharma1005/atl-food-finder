@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+import re
 
 
 
@@ -39,6 +40,9 @@ def logout_view(request):
     logout(request)
     return redirect('/login')
 
+def has_valid_email_ending(string):
+    valid_endings = (".com", ".net", ".org", ".edu", ".gov", ".io")
+    return string.endswith(valid_endings)
 
 def register_page(request):
     if request.method == "POST":
@@ -48,7 +52,17 @@ def register_page(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
 
-        print(request.POST)
+        if len(first_name) < 3 or len(last_name) < 3:
+            messages.info(request, "First and Last name must be longer than 2 characters!")
+            return redirect('/register/')
+
+        if not has_valid_email_ending(email):
+            messages.info(request, "Please enter a proper email!")
+            return redirect('/register/')
+
+        if len(username) < 4 or len(password) < 4:
+            messages.info(request, "Username and Password must be longer than 4 characters!")
+            return redirect('/register/') 
         
         user = User.objects.filter(email=email)
         user_ = User.objects.filter(username=username)
