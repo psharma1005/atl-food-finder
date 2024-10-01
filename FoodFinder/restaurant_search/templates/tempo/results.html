@@ -43,7 +43,7 @@
                         </a><br>
                         Distance: {{ restaurant.distance }}<br>
                         <!-- Fix the line below-->
-                        <a href="{% url 'restaurant_reviews' restaurant.place_id %}">View Reviews</a>
+                        
                         <form action="{% url 'add_to_favorites' %}" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
