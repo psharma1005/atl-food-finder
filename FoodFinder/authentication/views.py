@@ -5,9 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
 
-from functools import wraps
-from django.views.decorators.cache import never_cache
-from django.views.decorators.cache import cache_control
+
 
 
 # Create your views here.
