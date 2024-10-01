@@ -1,0 +1,54 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    height: 100%;
+}
+
+.banner {
+    background-color: peachpuff;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    justify-content: space-between;
+    position:relative;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.button2{
+    font-family: monospace;
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+}
+
+.button2:hover {
+    background-color: lightgray;
+}
+
+.navigation{
+    padding-right: 20px;
+}
+
+.reviewBox{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    background-color: peachpuff;
+    gap: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 30px;
+    text-align: center;
+}

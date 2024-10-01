@@ -1,6 +1,6 @@
 .topBar {
     width: 100%;
-    height: 60px; /* Adjust the height as needed */
+    height: 20vh; /* Adjust the height as needed */
     background-color: peachpuff; /* Peach color */
     display: flex;
     justify-content: center;
