@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Search</title>
     <link rel="stylesheet" href="{% static 'styleForSearch.css' %}">
 </head>
+
 <body>
     <div class="banner">
         <div class="banner_content">
-                <div class="title">
-                    <h1>Atlanta Food Finder</h1>
-                    <h2>Find Restaurants Near You</h2>
-                </div>
+            <div class="title">
+                <h1>Atlanta Food Finder</h1>
+                <h2>Find Restaurants Near You</h2>
+            </div>
         </div>
         <div class="navigation">
-            <button type="submit" class="button2">Profile</button>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profilePage:profile_page' %}"><button class="button2">Profile</button></a>
+            {% else %}
+            <a href="{% url 'login_page' %}"><button class="button2">Log In</button></a>
+            {% endif %}
+
         </div>
 
     </div>
-    
+
     <div class="searchForm">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Search</button>
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
     </div>
 </body>
+
 </html>

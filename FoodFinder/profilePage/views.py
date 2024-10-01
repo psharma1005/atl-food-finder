@@ -3,7 +3,21 @@ from django.contrib.auth.decorators import login_required
 from authentication.models import Profile  # Import the Profile model
 from profilePage.models import FavoriteRestaurant  # Import FavoriteRestaurant model
 
+from functools import wraps
+from django.views.decorators.cache import never_cache
+from django.views.decorators.cache import cache_control
+
+def no_cache(view_func):
+    @wraps(view_func)
+    @never_cache
+    @cache_control(no_store=True, must_revalidate=True, no_cache=True)
+    def wrapped_view(*args, **kwargs):
+        response = view_func(*args, **kwargs)
+        return response
+    return wrapped_view
+
 @login_required
+@no_cache
 def profile_page(request):
     username = request.user.username
     first_name = request.user.first_name

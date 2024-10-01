@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+
+from functools import wraps
+from django.views.decorators.cache import never_cache
+from django.views.decorators.cache import cache_control
+
 
 # Create your views here.
 
@@ -28,9 +33,13 @@ def login_page(request):
             return redirect('/login/')
         else:
             login(request, user)
-            return redirect('/search/')
+            return redirect('/')
 
     return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login')
 
 
 def register_page(request):
