@@ -12,30 +12,31 @@
 <body>
     <div class="banner">
         <div class="banner_content">
-                <div class="title">
-                    <h1>Atlanta Food Finder</h1>
-                    <h2>Restaurant Reviews</h2>
-                </div>
+            <div class="title">
+                <h1>Atlanta Food Finder</h1>
+                <h2>Restaurant Reviews</h2>
+            </div>
         </div>
         <div class="navigation">
-            <button type="submit" class="button2">Back to Search</button>
+
+            <a href="{% url 'restaurant_search' %}"><button class="button2">Back to Search</button></a>
         </div>
 
     </div>
 
     <div class="reviewBox">
-    {% if reviews %}
+        {% if reviews %}
         <ul>
-        {% for review in reviews %}
+            {% for review in reviews %}
             <li>
                 <strong>Rating: {{ review.rating }} / 5</strong>
                 <p>{{ review.text }}</p>
                 <p>Reviewed by: {{ review.author_name }} on {{ review.relative_time_description }}</p>
             </li>
-        {% endfor %}
+            {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <p>No reviews found for this restaurant.</p>
-    {% endif %}
+        {% endif %}
     </div>
 </body>
