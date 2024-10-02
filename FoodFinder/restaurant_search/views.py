@@ -136,6 +136,6 @@ def add_to_favorites(request):
         print(rating)
         # Return a success response
 
-        return JsonResponse({'status': 'success', 'message': 'Restaurant added to favorites.'})
+        return redirect('/profile')
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=400)

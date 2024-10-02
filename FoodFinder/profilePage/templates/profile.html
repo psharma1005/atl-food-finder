@@ -11,7 +11,7 @@
 
 <body>
     <div class="topBar">
-        <a href="{% url 'search' %}"><button class="button">Back to Search</button></a>
+        <a href="{% url 'restaurant_search' %}"><button class="button">Back to Search</button></a>
         <a href="{% url 'logout' %}"><button class="button">Log Out</button></a>
     </div>
 
@@ -73,7 +73,6 @@
                 <h3 class="restaurantName">{{ restaurant.name }}</h3><br>
                 Rating: {{ restaurant.rating }}<br>
                 Address: {{ restaurant.address }}<br>
-                Distance: {{ restaurant.distance }} km
             </li>
             {% endfor %}
         </ul>
@@ -100,43 +99,44 @@
                         'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
                     },
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Update the favorite restaurant list dynamically
-                        const restaurantList = document.querySelector('.favorites ul');
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Update the favorite restaurant list dynamically
+                            const restaurantList = document.querySelector('.favorites ul');
 
-                        if (!restaurantList) {
-                            // If the list doesn't exist yet, create it
-                            const newList = document.createElement('ul');
-                            newList.innerHTML = `
+                            if (!restaurantList) {
+                                // If the list doesn't exist yet, create it
+                                const newList = document.createElement('ul');
+                                newList.innerHTML = `
                                 <li>
                                     <strong>${data.name}</strong><br>
                                     Rating: ${data.rating}<br>
                                     Address: ${data.address}<br>
                                     Distance: ${data.distance} km
                                 </li>`;
-                            document.querySelector('.favorites').appendChild(newList);
-                        } else {
-                            // Append to the existing list
-                            const newRestaurant = `
+                                document.querySelector('.favorites').appendChild(newList);
+                            } else {
+                                // Append to the existing list
+                                const newRestaurant = `
                                 <li>
                                     <strong>${data.name}</strong><br>
                                     Rating: ${data.rating}<br>
                                     Address: ${data.address}<br>
                                     Distance: ${data.distance} km
                                 </li>`;
-                            restaurantList.innerHTML += newRestaurant;
+                                restaurantList.innerHTML += newRestaurant;
+                            }
+
+                            // Clear the form fields after submission
+                            restaurantForm.reset();
                         }
-
-                        // Clear the form fields after submission
-                        restaurantForm.reset();
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+                    })
+                    .catch(error => console.error('Error:', error));
             });
         });
     </script>
 
 </body>
+
 </html>

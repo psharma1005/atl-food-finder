@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
-    'restaurant_search.apps.RestaurantSearchConfig',
     'profilePage',
+    'restaurant_search',
     
 ]
 

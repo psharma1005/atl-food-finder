@@ -20,8 +20,10 @@ from django.urls import path, include
 from django.urls import path
 from .views import restaurant_search_view
 from .views import restaurant_reviews_view
+from .views import *
 
 urlpatterns = [
     path('', restaurant_search_view, name='restaurant_search'),
     path('reviews/<str:place_id>/', restaurant_reviews_view, name='restaurant_reviews'),
+    path("favorite_added/", add_to_favorites, name='favorites')
 ]
