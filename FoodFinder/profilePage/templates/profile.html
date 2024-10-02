@@ -11,7 +11,6 @@
 
 <body>
     <div class="topBar">
-
         <a href="{% url 'search' %}"><button class="button">Back to Search</button></a>
         <a href="{% url 'logout' %}"><button class="button">Logout</button></a>
     </div>
@@ -25,7 +24,6 @@
         <div class="favCusine">
             <p class="center">Favorite Cuisine: {{ favorite_cusine }}</p>
         </div>
-    </div>
     </div>
 
     <div class="updateFav">
@@ -84,7 +82,61 @@
         {% endif %}
     </div>
 
+    <!-- Add the AJAX script before the closing body tag -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const restaurantForm = document.querySelector('.addFav form');
+
+            restaurantForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(restaurantForm);
+
+                // Send the data asynchronously to the server using fetch
+                fetch(restaurantForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update the favorite restaurant list dynamically
+                        const restaurantList = document.querySelector('.favorites ul');
+
+                        if (!restaurantList) {
+                            // If the list doesn't exist yet, create it
+                            const newList = document.createElement('ul');
+                            newList.innerHTML = `
+                                <li>
+                                    <strong>${data.name}</strong><br>
+                                    Rating: ${data.rating}<br>
+                                    Address: ${data.address}<br>
+                                    Distance: ${data.distance} km
+                                </li>`;
+                            document.querySelector('.favorites').appendChild(newList);
+                        } else {
+                            // Append to the existing list
+                            const newRestaurant = `
+                                <li>
+                                    <strong>${data.name}</strong><br>
+                                    Rating: ${data.rating}<br>
+                                    Address: ${data.address}<br>
+                                    Distance: ${data.distance} km
+                                </li>`;
+                            restaurantList.innerHTML += newRestaurant;
+                        }
+
+                        // Clear the form fields after submission
+                        restaurantForm.reset();
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
 
 </body>
-
 </html>
