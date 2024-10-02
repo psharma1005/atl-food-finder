@@ -15,6 +15,7 @@ urlpatterns = [
     path('register/', register_page, name='register_page'),
     path('reset-password/', reset_password_page, name='reset_password_page'),
     path('', restaurant_search_view, name='search'),
+    path('', include('restaurant_search.urls')),
     #path('profile/', add_to_favorites, name='add_to_favorites'),
 
     path('profile/', include('profilePage.urls'))
