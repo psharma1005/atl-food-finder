@@ -12,7 +12,7 @@
 <body>
     <div class="topBar">
         <a href="{% url 'search' %}"><button class="button">Back to Search</button></a>
-        <a href="{% url 'logout' %}"><button class="button">Logout</button></a>
+        <a href="{% url 'logout' %}"><button class="button">Log Out</button></a>
     </div>
 
     <div class="userdisplay">
@@ -70,7 +70,7 @@
         <ul>
             {% for restaurant in favorite_restaurants %}
             <li>
-                <strong>{{ restaurant.name }}</strong><br>
+                <h3 class="restaurantName">{{ restaurant.name }}</h3><br>
                 Rating: {{ restaurant.rating }}<br>
                 Address: {{ restaurant.address }}<br>
                 Distance: {{ restaurant.distance }} km
