@@ -64,6 +64,7 @@ body, .top-bar {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    padding: 20px;
 }
 
 .fav-title {
@@ -151,4 +152,8 @@ input {
 
 button:hover {
     background-color: lightgray;
+}
+
+.restaurantName{
+    font-size: 1.7em;
 }
